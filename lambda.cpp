@@ -36,7 +36,26 @@ ostream &operator<<(ostream &os, const unique_ptr<Lambda> &term)
     os << '\\' << term->variable_ << '.' << term->left_;
     break;
   case Lambda::APPLICATION:
-    os << '(' << term->left_ << ' ' << term->right_ << ')';
+    if (term->left_->type_ == Lambda::ABSTRACTION)
+    {
+      // Enclose in parenthesis
+      os << '(' << term->left_ << ')';
+    }
+    else 
+    {
+      os << term->left_;
+    }
+    os << ' ';
+    
+    if (term->right_->type_ == Lambda::ABSTRACTION  || term->right_->type_ == Lambda::APPLICATION)
+    {
+      os << '(' << term->right_ << ')';
+    }
+    else 
+    {
+      os << term->right_;
+    }
+    break;
   }
 
   return os;
