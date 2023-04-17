@@ -1,4 +1,5 @@
 #include "lambda.hpp"
+#include "lexer.hpp"
 
 using namespace std;
 
@@ -224,4 +225,11 @@ int main()
   cout << Y << '\n';
   cout << PRED << '\n';
   cout << SUB << '\n';
+
+
+  // TEST THE LEXER HERE 
+  //Lexer lexer{std::cin};
+  //auto token = lexer.get();
+
+  //cout << token.type << ',' << token.lexeme << '\n';
 }
